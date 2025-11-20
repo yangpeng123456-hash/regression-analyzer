@@ -73,7 +73,7 @@ jobs:
         "
         
     - name: Build with PyInstaller
-    run: |
+    run: |   
       pyinstaller --onefile --windowed --name="RegressionAnalyzer" --clean regression_gui.py
         # 如果上面的命令失败，尝试简化版本
         # pyinstaller --onefile --name="RegressionAnalyzer" regression_gui.py
