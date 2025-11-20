@@ -38,48 +38,48 @@ jobs:
     - name: Verify imports
       run: |
         python -c "
-import sys
-print('Python version:', sys.version)
+        import sys
+        print('Python version:', sys.version)
 
-try:
-    import pandas as pd
-    print('✓ pandas:', pd.__version__)
-except ImportError as e:
-    print('✗ pandas failed:', e)
-    sys.exit(1)
-
-try:
-    import numpy as np
-    print('✓ numpy:', np.__version__)
-except ImportError as e:
-    print('✗ numpy failed:', e)
-    sys.exit(1)
-
-try:
-    import statsmodels.api as sm
-    print('✓ statsmodels available')
-except ImportError as e:
-    print('✗ statsmodels failed:', e)
-    sys.exit(1)
-
-try:
-    import matplotlib.pyplot as plt
-    print('✓ matplotlib available')
-except ImportError as e:
-    print('✗ matplotlib failed:', e)
-    sys.exit(1)
-
-print('All imports successful!')
-"
+        try:
+            import pandas as pd
+            print('✓ pandas:', pd.__version__)
+        except ImportError as e:
+            print('✗ pandas failed:', e)
+            sys.exit(1)
         
-    - name: Build with PyInstaller
-      run: |
+        try:
+            import numpy as np
+            print('✓ numpy:', np.__version__)
+        except ImportError as e:
+            print('✗ numpy failed:', e)
+            sys.exit(1)
+        
+        try:
+            import statsmodels.api as sm
+            print('✓ statsmodels available')
+        except ImportError as e:
+            print('✗ statsmodels failed:', e)
+            sys.exit(1)
+        
+        try:
+            import matplotlib.pyplot as plt
+            print('✓ matplotlib available')
+        except ImportError as e:
+            print('✗ matplotlib failed:', e)
+            sys.exit(1)
+        
+        print('All imports successful!')
+        "
+        
+    - name:Build with PyInstaller
+      run:|
         pyinstaller --onefile --windowed --name="RegressionAnalyzer" --clean regression_gui.py
         # 如果上面的命令失败，尝试简化版本
         # pyinstaller --onefile --name="RegressionAnalyzer" regression_gui.py
         
-    - name: Test built executable
-      run: |
+    - name:Test built executable
+      run:|
         if [ -f "dist/RegressionAnalyzer.exe" ]; then
           echo "✓ Executable built successfully"
           ls -la dist/
