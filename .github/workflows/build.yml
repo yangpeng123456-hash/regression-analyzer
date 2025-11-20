@@ -72,14 +72,14 @@ jobs:
         print('All imports successful!')
         "
         
-    - name:Build with PyInstaller
-      run:|
-        pyinstaller --onefile --windowed --name="RegressionAnalyzer" --clean regression_gui.py
+    - name: Build with PyInstaller
+    run: |
+      pyinstaller --onefile --windowed --name="RegressionAnalyzer" --clean regression_gui.py
         # 如果上面的命令失败，尝试简化版本
         # pyinstaller --onefile --name="RegressionAnalyzer" regression_gui.py
         
-    - name:Test built executable
-      run:|
+      - name: Test built executable
+      run: |
         if [ -f "dist/RegressionAnalyzer.exe" ]; then
           echo "✓ Executable built successfully"
           ls -la dist/
@@ -89,10 +89,10 @@ jobs:
           ls -la build/ || echo "build directory not found"
           exit 1
         fi
-        
-    - name: Upload artifact
-      uses: actions/upload-artifact@v3
-      with:
-        name: RegressionAnalyzer-Windows-Py${{ matrix.python-version }}
-        path: dist/RegressionAnalyzer.exe
-        retention-days: 30
+          
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: RegressionAnalyzer-Windows-Py${{ matrix.python-version }}
+          path: dist/RegressionAnalyzer.exe
+          retention-days: 30
