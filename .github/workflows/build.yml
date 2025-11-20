@@ -73,22 +73,22 @@ jobs:
         "
         
     - name: Build with PyInstaller
-    run: |   
-      pyinstaller --onefile --windowed --name="RegressionAnalyzer" --clean regression_gui.py
-        # 如果上面的命令失败，尝试简化版本
-        # pyinstaller --onefile --name="RegressionAnalyzer" regression_gui.py
+      run: |   
+        pyinstaller --onefile --windowed --name="RegressionAnalyzer" --clean regression_gui.py
+          # 如果上面的命令失败，尝试简化版本
+          # pyinstaller --onefile --name="RegressionAnalyzer" regression_gui.py
         
       - name: Test built executable
-      run: |
-        if [ -f "dist/RegressionAnalyzer.exe" ]; then
-          echo "✓ Executable built successfully"
-          ls -la dist/
-        else
-          echo "✗ Executable not found"
-          ls -la dist/ || echo "dist directory not found"
-          ls -la build/ || echo "build directory not found"
-          exit 1
-        fi
+        run: |
+          if [ -f "dist/RegressionAnalyzer.exe" ]; then
+            echo "✓ Executable built successfully"
+            ls -la dist/
+          else
+            echo "✗ Executable not found"
+            ls -la dist/ || echo "dist directory not found"
+            ls -la build/ || echo "build directory not found"
+            exit 1
+          fi
           
       - name: Upload artifact
         uses: actions/upload-artifact@v3
