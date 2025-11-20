@@ -69,7 +69,8 @@ jobs:
             print('✗ matplotlib failed:', e)
             sys.exit(1)
         
-        print('All imports successful!')"      
+        print('All imports successful!')
+        "      
     - name: Build with PyInstaller
       run: |   
         pyinstaller --onefile --windowed --name="RegressionAnalyzer" --clean regression_gui.py
