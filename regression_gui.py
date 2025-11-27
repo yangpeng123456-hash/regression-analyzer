@@ -12,8 +12,8 @@ from pathlib import Path
 import warnings
 
 warnings.filterwarnings('ignore')
-plt.rcParams['font.sans-serif'] = ['Arial Unicode MS']  # Mac
-
+#plt.rcParams['font.sans-serif'] = ['Arial Unicode MS']  # Mac
+plt.rcParams['font.sans-serif'] = ['SimHei', 'Microsoft YaHei', 'SimSun']  #windows
 
 class RegressionAnalyzerGUI:
     def __init__(self, root):
